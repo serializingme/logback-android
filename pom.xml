@@ -180,6 +180,21 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.12.4</version>
         </plugin>
+
+        <plugin>
+          <groupId>com.github.tony19</groupId>
+          <artifactId>maven-gpg-plug1n</artifactId>
+          <version>1.4.1-SNAPSHOT</version>
+          <executions>
+            <execution>
+              <id>sign-artifacts</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>sign</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -239,18 +254,8 @@
       </plugin>
 
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <version>1.1</version>
-        <executions>
-          <execution>
-            <id>sign-artifacts</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
+        <groupId>com.github.tony19</groupId>
+        <artifactId>maven-gpg-plug1n</artifactId>
       </plugin>
 
       <plugin>
@@ -331,18 +336,8 @@
       <build>
         <plugins>
           <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.1</version>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-              </execution>
-            </executions>
+            <groupId>com.github.tony19</groupId>
+            <artifactId>maven-gpg-plug1n</artifactId>
           </plugin>
         </plugins>
       </build>
