@@ -271,11 +271,11 @@ public class ContextInitializer {
     // for the SD-card search
     List<SaxEvent> saxEvents = new ArrayList<SaxEvent>();
     StringBuffer packageNameBuf = new StringBuffer();
-    boolean hasManifestInfo = parseManifest(saxEvents, packageNameBuf);
+    parseManifest(saxEvents, packageNameBuf);
     String packageName = packageNameBuf.toString();
 
     // set context properties
-    if (hasManifestInfo) {
+    if (packageName.length() > 0) {
       loggerContext.putProperty(CoreConstants.PACKAGE_KEY, packageName);
       loggerContext.putProperty(CoreConstants.DATA_DIR_KEY, CommonPathUtil.getFilesDirectoryPath(packageName));
     }
@@ -294,7 +294,7 @@ public class ContextInitializer {
     }
 
     // search manifest
-    if (!configured && hasManifestInfo) {
+    if (!configured && !saxEvents.isEmpty()) {
       configurator.doConfigure(saxEvents);
       configured = true;
     }
@@ -330,7 +330,7 @@ public class ContextInitializer {
     Set<URL> urlSet = null;
     StatusManager sm = loggerContext.getStatusManager();
     try {
-      urlSet = Loader.getResourceOccurenceCount(resourceName, classLoader);
+      urlSet = Loader.getResourceOccurrenceCount(resourceName, classLoader);
     } catch (IOException e) {
       sm.add(new ErrorStatus("Failed to get url list for resource [" + resourceName + "]",
               loggerContext, e));
